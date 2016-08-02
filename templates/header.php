@@ -2,7 +2,8 @@
   <div class="top-bar">
     <div class="top-bar-title">
       <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-        <button class="menu-icon dark" type="button" data-toggle></button>
+   <!-- <button class="menu-icon dark" type="button" data-toggle></button> --> 
+        <button class="menu-icon dark" type="button" data-open="offCanvasLeft"></button>
       </span>
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo('name'); ?></a>
     </div><!-- .top-bar-title -->
