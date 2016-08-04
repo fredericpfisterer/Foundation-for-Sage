@@ -6,8 +6,8 @@
 function sage_top_nav() {
 	wp_nav_menu([
 		'container' => false,                           // Remove nav container
-		'menu_class' => 'vertical medium-horizontal menu',       // Adding custom nav class
-		'items_wrap' => '<div class="hide-for-small-only main-menu menu-centered"><ul id="%1$s" class="%2$s" data-responsive-menu="accordion medium-dropdown" role="navigation"t>%3$s</ul></div>',
+		'menu_class' => 'dropdown menu',       // Adding custom nav class
+		'items_wrap' => '<div class="hide-for-small-only"><ul id="%1$s" class="%2$s" data-dropdown-menu role="navigation">%3$s</ul></div>',
 		'theme_location' => 'primary_navigation',        			// Where it's located in the theme
 		'depth' => 5,                                   // Limit the depth of the nav
 		'fallback_cb' => false,                         // Fallback function (see below)
