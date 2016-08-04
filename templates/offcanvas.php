@@ -5,4 +5,4 @@
 	<?php endif;?>
 </div>
 
-// You can also add an offcanvas right by copying the above code and changing left to right.
+<!-- You can also add an offcanvas right by copying the above code and changing left to right. -->
