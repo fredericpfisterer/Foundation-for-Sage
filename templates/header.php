@@ -15,10 +15,8 @@
         <?php endif;?>
       </div><!-- .top-bar-left -->
 
-        <div class="top-bar-right">
-          <ul class="menu">
-            <li><?php get_search_form(); ?></li>
-          </ul>
+        <div class="top-bar-right"> 
+            <?php get_search_form(); ?>    
         </div><!-- .top-bar-right -->
     </div><!-- .responsive-menu -->
   </div><!-- .top-bar -->
