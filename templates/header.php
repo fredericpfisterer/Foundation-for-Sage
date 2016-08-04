@@ -16,10 +16,14 @@
           <?php sage_top_nav();?>
         <?php endif;?>
       </div><!-- .top-bar-left -->
-
-        <div class="top-bar-right"> 
-            <?php get_search_form(); ?>    
-        </div><!-- .top-bar-right -->
+      <div class="top-bar-right">
+        <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+          <ul class="menu">
+            <li><input type="text" value="" name="s" id="s" placeholder="<?php echo esc_attr_x( 'Search …', 'placeholder' ) ?>"></li>
+            <li><input type="submit" class="button" value="<?php echo esc_attr_x( 'Search', 'submit button' ) ?>"></input></li>
+          </ul>
+        </form>
+      </div><!-- .top-bar-right -->
     </div><!-- .responsive-menu -->
   </div><!-- .top-bar -->
 </header>
