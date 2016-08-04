@@ -1,6 +1,6 @@
 # Foundation for Sage
 [![Build Status](https://travis-ci.org/roots/sage.svg)](https://travis-ci.org/roots/sage)
-[![devDependency Status](https://david-dm.org/roots/sage/dev-status.svg)](https://david-dm.org/roots/sage#info=devDependencies)
+[![devDependency Status](https://david-dm.org/chuckn246/sage-foundation-sites/dev-status.svg)](https://david-dm.org/roots/sage#info=devDependencies)
 
 Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Zurb Foundation for sites, that will help you make better themes.
 

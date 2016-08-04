@@ -12,7 +12,7 @@ var jshint       = require('gulp-jshint');
 var lazypipe     = require('lazypipe');
 var less         = require('gulp-less');
 var merge        = require('merge-stream');
-var minifyCss    = require('gulp-minify-css');
+var cssNano      = require('gulp-cssnano');
 var plumber      = require('gulp-plumber');
 var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
@@ -79,43 +79,42 @@ var revManifest = path.dist + 'assets.json';
 // ```
 var cssTasks = function(filename) {
   return lazypipe()
-    .pipe(function() {
-      return gulpif(!enabled.failStyleTask, plumber());
-    })
-    .pipe(function() {
-      return gulpif(enabled.maps, sourcemaps.init());
-    })
-    .pipe(function() {
-      return gulpif('*.less', less());
-    })
-    .pipe(function() {
-      return gulpif('*.scss', sass({
-        outputStyle: 'nested', // libsass doesn't support expanded yet
-        precision: 10,
-        includePaths: ['.', './bower_components/foundation-sites/scss/'],
-        errLogToConsole: !enabled.failStyleTask
-      }));
-    })
-    .pipe(concat, filename)
-    .pipe(autoprefixer, {
-      browsers: [
-        'last 2 versions',
-        'android 4',
-        'opera 12'
-      ]
-    })
-    .pipe(minifyCss, {
-      advanced: false,
-      rebase: false
-    })
-    .pipe(function() {
-      return gulpif(enabled.rev, rev());
-    })
-    .pipe(function() {
-      return gulpif(enabled.maps, sourcemaps.write('.', {
-        sourceRoot: 'assets/styles/'
-      }));
-    })();
+      .pipe(function() {
+        return gulpif(!enabled.failStyleTask, plumber());
+      })
+      .pipe(function() {
+        return gulpif(enabled.maps, sourcemaps.init());
+      })
+      .pipe(function() {
+        return gulpif('*.less', less());
+      })
+      .pipe(function() {
+        return gulpif('*.scss', sass({
+          outputStyle: 'nested', // libsass doesn't support expanded yet
+          precision: 10,
+          includePaths: ['.'],
+          errLogToConsole: !enabled.failStyleTask
+        }));
+      })
+      .pipe(concat, filename)
+      .pipe(autoprefixer, {
+        browsers: [
+          'last 2 versions',
+          'android 4',
+          'opera 12'
+        ]
+      })
+      .pipe(cssNano, {
+        safe: true
+      })
+      .pipe(function() {
+        return gulpif(enabled.rev, rev());
+      })
+      .pipe(function() {
+        return gulpif(enabled.maps, sourcemaps.write('.', {
+          sourceRoot: 'assets/styles/'
+        }));
+      })();
 };
 
 // ### JS processing pipeline
@@ -127,23 +126,23 @@ var cssTasks = function(filename) {
 // ```
 var jsTasks = function(filename) {
   return lazypipe()
-    .pipe(function() {
-      return gulpif(enabled.maps, sourcemaps.init());
-    })
-    .pipe(concat, filename)
-    .pipe(uglify, {
-      compress: {
-        'drop_debugger': enabled.stripJSDebug
-      }
-    })
-    .pipe(function() {
-      return gulpif(enabled.rev, rev());
-    })
-    .pipe(function() {
-      return gulpif(enabled.maps, sourcemaps.write('.', {
-        sourceRoot: 'assets/scripts/'
-      }));
-    })();
+      .pipe(function() {
+        return gulpif(enabled.maps, sourcemaps.init());
+      })
+      .pipe(concat, filename)
+      .pipe(uglify, {
+        compress: {
+          'drop_debugger': enabled.stripJSDebug
+        }
+      })
+      .pipe(function() {
+        return gulpif(enabled.rev, rev());
+      })
+      .pipe(function() {
+        return gulpif(enabled.maps, sourcemaps.write('.', {
+          sourceRoot: 'assets/scripts/'
+        }));
+      })();
 };
 
 // ### Write to rev manifest
@@ -151,13 +150,13 @@ var jsTasks = function(filename) {
 // See https://github.com/sindresorhus/gulp-rev
 var writeToManifest = function(directory) {
   return lazypipe()
-    .pipe(gulp.dest, path.dist + directory)
-    .pipe(browserSync.stream, {match: '**/*.{js,css}'})
-    .pipe(rev.manifest, revManifest, {
-      base: path.dist,
-      merge: true
-    })
-    .pipe(gulp.dest, path.dist)();
+      .pipe(gulp.dest, path.dist + directory)
+      .pipe(browserSync.stream, {match: '**/*.{js,css}'})
+      .pipe(rev.manifest, revManifest, {
+        base: path.dist,
+        merge: true
+      })
+      .pipe(gulp.dest, path.dist)();
 };
 
 // ## Gulp tasks
@@ -178,10 +177,10 @@ gulp.task('styles', ['wiredep'], function() {
       });
     }
     merged.add(gulp.src(dep.globs, {base: 'styles'})
-      .pipe(cssTasksInstance));
+        .pipe(cssTasksInstance));
   });
   return merged
-    .pipe(writeToManifest('styles'));
+      .pipe(writeToManifest('styles'));
 });
 
 // ### Scripts
@@ -191,12 +190,12 @@ gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
   manifest.forEachDependency('js', function(dep) {
     merged.add(
-      gulp.src(dep.globs, {base: 'scripts'})
-        .pipe(jsTasks(dep.name))
+        gulp.src(dep.globs, {base: 'scripts'})
+            .pipe(jsTasks(dep.name))
     );
   });
   return merged
-    .pipe(writeToManifest('scripts'));
+      .pipe(writeToManifest('scripts'));
 });
 
 // ### Fonts
@@ -204,22 +203,22 @@ gulp.task('scripts', ['jshint'], function() {
 // structure. See: https://github.com/armed/gulp-flatten
 gulp.task('fonts', function() {
   return gulp.src(globs.fonts)
-    .pipe(flatten())
-    .pipe(gulp.dest(path.dist + 'fonts'))
-    .pipe(browserSync.stream());
+      .pipe(flatten())
+      .pipe(gulp.dest(path.dist + 'fonts'))
+      .pipe(browserSync.stream());
 });
 
 // ### Images
 // `gulp images` - Run lossless compression on all the images.
 gulp.task('images', function() {
   return gulp.src(globs.images)
-    .pipe(imagemin({
-      progressive: true,
-      interlaced: true,
-      svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
-    }))
-    .pipe(gulp.dest(path.dist + 'images'))
-    .pipe(browserSync.stream());
+      .pipe(imagemin({
+        progressive: true,
+        interlaced: true,
+        svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
+      }))
+      .pipe(gulp.dest(path.dist + 'images'))
+      .pipe(browserSync.stream());
 });
 
 // ### JSHint
@@ -228,9 +227,9 @@ gulp.task('jshint', function() {
   return gulp.src([
     'bower.json', 'gulpfile.js'
   ].concat(project.js))
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(gulpif(enabled.failJSHint, jshint.reporter('fail')));
+      .pipe(jshint())
+      .pipe(jshint.reporter('jshint-stylish'))
+      .pipe(gulpif(enabled.failJSHint, jshint.reporter('fail')));
 });
 
 // ### Clean
@@ -247,7 +246,6 @@ gulp.task('watch', function() {
   browserSync.init({
     files: ['{lib,templates}/**/*.php', '*.php'],
     proxy: config.devUrl,
-    browser: "Google Chrome",
     snippetOptions: {
       whitelist: ['/wp-admin/admin-ajax.php'],
       blacklist: ['/wp-admin/**']
@@ -265,9 +263,9 @@ gulp.task('watch', function() {
 // Generally you should be running `gulp` instead of `gulp build`.
 gulp.task('build', function(callback) {
   runSequence('styles',
-              'scripts',
-              ['fonts', 'images'],
-              callback);
+      'scripts',
+      ['fonts', 'images'],
+      callback);
 });
 
 // ### Wiredep
@@ -276,11 +274,11 @@ gulp.task('build', function(callback) {
 gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
   return gulp.src(project.css)
-    .pipe(wiredep())
-    .pipe(changed(path.source + 'styles', {
-      hasChanged: changed.compareSha1Digest
-    }))
-    .pipe(gulp.dest(path.source + 'styles'));
+      .pipe(wiredep())
+      .pipe(changed(path.source + 'styles', {
+        hasChanged: changed.compareSha1Digest
+      }))
+      .pipe(gulp.dest(path.source + 'styles'));
 });
 
 // ### Gulp
