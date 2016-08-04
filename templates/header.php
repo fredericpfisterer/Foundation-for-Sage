@@ -5,7 +5,9 @@
    <!-- <button class="menu-icon dark" type="button" data-toggle></button> --> 
         <button class="menu-icon dark" type="button" data-open="offCanvasLeft"></button>
       </span>
+      <strong>
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo('name'); ?></a>
+      </strong>
     </div><!-- .top-bar-title -->
 
     <div id="responsive-menu">
