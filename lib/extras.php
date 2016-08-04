@@ -38,3 +38,16 @@ class Foundation_Nav_Menu extends \Walker_Nav_Menu {
         $output .= "\n$indent<ul class=\"menu\">\n";
     }
 }
+
+/*
+ * Add aria labels to the pagination
+ */
+
+add_filter('previous_posts_link_attributes', __NAMESPACE__ . '\\prev_posts_link_attributes');
+function prev_posts_link_attributes() {
+  return 'aria-label="Previous page"';
+}
+add_filter('next_posts_link_attributes', __NAMESPACE__ . '\\next_posts_link_attributes');
+function next_posts_link_attributes() {
+  return 'aria-label="Next page"';
+}
