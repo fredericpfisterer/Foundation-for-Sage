@@ -10,11 +10,9 @@
 
     <div id="responsive-menu">
       <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-            <?php if (has_nav_menu('primary_navigation')) :?>
-              <?php wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav', 'container' => '', 'items_wrap' => '%3$s', 'walker' => new Roots\Sage\Extras\Foundation_Nav_Menu()]);?>
-            <?php endif;?>
-          </ul>
+        <?php if (has_nav_menu('primary_navigation')) :?>
+          <?php sage_top_nav();?>
+        <?php endif;?>
       </div><!-- .top-bar-left -->
 
         <div class="top-bar-right">
