@@ -15,7 +15,34 @@
 
         "./scss/foundation.scss",
 
-        "./dist/foundation.js"
+        "./dist/plugins/foundation.core.js",
+        "./dist/plugins/foundation.abide.js",
+        "./dist/plugins/foundation.accordion.js",
+        "./dist/plugins/foundation.accordionMenu.js",
+        "./dist/plugins/foundation.drilldown.js",
+        "./dist/plugins/foundation.dropdown.js",
+        "./dist/plugins/foundation.dropdownMenu.js",
+        "./dist/plugins/foundation.equalizer.js",
+        "./dist/plugins/foundation.interchange.js",
+        "./dist/plugins/foundation.magellan.js",
+        "./dist/plugins/foundation.offcanvas.js",
+        "./dist/plugins/foundation.orbit.js",
+        "./dist/plugins/foundation.responsiveMenu.js",
+        "./dist/plugins/foundation.responsiveToggle.js",
+        "./dist/plugins/foundation.reveal.js",
+        "./dist/plugins/foundation.slider.js",
+        "./dist/plugins/foundation.sticky.js",
+        "./dist/plugins/foundation.tabs.js",
+        "./dist/plugins/foundation.toggler.js",
+        "./dist/plugins/foundation.tooltip.js",
+        "./dist/plugins/foundation.util.box.js",
+        "./dist/plugins/foundation.util.keyboard.js",
+        "./dist/plugins/foundation.util.mediaQuery.js",
+        "./dist/plugins/foundation.util.motion.js",
+        "./dist/plugins/foundation.util.nest.js",
+        "./dist/plugins/foundation.util.timerAndImageLoader.js",
+        "./dist/plugins/foundation.util.touch.js",
+        "./dist/plugins/foundation.util.triggers.js"
 
       ]
     }

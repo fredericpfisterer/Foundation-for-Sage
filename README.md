@@ -16,7 +16,7 @@ Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Z
 | Prerequisite    | How to check | How to install
 | --------------- | ------------ | ------------- |
 | PHP >= 5.4.x    | `php -v`     | [php.net](http://php.net/manual/en/install.php) |
-| Node.js 0.12.x  | `node -v`    | [nodejs.org](http://nodejs.org/) |
+| Node.js >= 4.5  | `node -v`    | [nodejs.org](http://nodejs.org/) |
 | gulp >= 3.8.10  | `gulp -v`    | `npm install -g gulp` |
 | Bower >= 1.3.12 | `bower -v`   | `npm install -g bower` |
 
@@ -47,7 +47,16 @@ See a complete working example in the [roots-example-project.com repo](https://g
 
 ## Theme installation
 
-Clone the git repo - `git clone https://github.com/roots/sage.git` and then rename the directory to the name of your theme or website.
+Install Sage by copying the project into a new folder within your WordPress themes directory.
+
+Make sure [Composer](https://getcomposer.org/download/) has been installed before moving on.
+
+Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
+
+```shell
+# @ example.com/site/web/app/themes/
+$ composer create-project roots/sage your-theme-name 8.5.0
+```
 
 ## Theme setup
 
@@ -102,7 +111,7 @@ Sage documentation is available at [https://roots.io/sage/docs/](https://roots.i
 
 ## Contributing
 
-Contributions are welcome from everyone. We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
+Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md) to help you get started.
 
 ## Community
 
@@ -112,3 +121,4 @@ Keep track of development and community news.
 * Follow [@rootswp on Twitter](https://twitter.com/rootswp)
 * Read and subscribe to the [Roots Blog](https://roots.io/blog/)
 * Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
+* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
