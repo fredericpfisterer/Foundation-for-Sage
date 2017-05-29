@@ -10,7 +10,7 @@ use Roots\Sage\Setup;
 function body_class($classes) {
   // Add page slug if it doesn't exist
   if ( is_single() || is_page() && !is_front_page() ) {
-    if ( !in_array(basename( get_permalink() ), $classes ) ) {
+    if ( !in_array( basename( get_permalink() ), $classes ) ) {
       $classes[] = basename( get_permalink() );
     }
   }
@@ -44,12 +44,12 @@ class Foundation_Nav_Menu extends \Walker_Nav_Menu {
  */
 
 function prev_posts_link_attributes() { 
-  return 'aria-label="' __( 'Previous page', 'sage' ) . '"';
+  return 'aria-label="' . __( 'Previous page', 'sage' ) . '"';
 }
 add_filter('previous_posts_link_attributes', __NAMESPACE__ . '\\prev_posts_link_attributes');
 
 function next_posts_link_attributes() {
-  return 'aria-label="' __( 'Next page', 'sage' ) . '"';
+  return 'aria-label="' . __( 'Next page', 'sage' ) . '"';
 }  
 add_filter('next_posts_link_attributes', __NAMESPACE__ . '\\next_posts_link_attributes');
 
