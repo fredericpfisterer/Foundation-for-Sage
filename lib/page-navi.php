@@ -1,10 +1,11 @@
 <?php
+
 namespace Roots\Sage\PageNavi;
 // Numeric Page Navi pieced together from using the JointsWP Code (https://github.com/JeremyEnglert/JointsWP) I also added screen reader functionality..
 
 function sage_page_navi( $before = '', $after = '' ) {
   global $wpdb, $wp_query;
-        
+
 	$request = $wp_query->request;
 	$posts_per_page = intval( get_query_var( 'posts_per_page' ) );
 	$paged = intval( get_query_var( 'paged' ) );
