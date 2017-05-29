@@ -1,4 +1,6 @@
 <?php
+
+namespace Roots\Sage\Menus;
 // I pieced this together from using the JointsWP Menu Code (https://github.com/JeremyEnglert/JointsWP)
 
 // The Top Menu
