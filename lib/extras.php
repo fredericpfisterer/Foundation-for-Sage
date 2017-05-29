@@ -42,7 +42,6 @@ class Foundation_Nav_Menu extends \Walker_Nav_Menu {
 /*
  * Add aria labels to the pagination
  */
-
 function prev_posts_link_attributes() { 
   return 'aria-label="' . __( 'Previous page', 'sage' ) . '"';
 }
@@ -52,4 +51,3 @@ function next_posts_link_attributes() {
   return 'aria-label="' . __( 'Next page', 'sage' ) . '"';
 }  
 add_filter( 'next_posts_link_attributes', __NAMESPACE__ . '\\next_posts_link_attributes' );
-
