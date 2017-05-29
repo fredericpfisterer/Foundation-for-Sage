@@ -12,8 +12,8 @@
 
     <div id="responsive-menu">
       <div class="top-bar-left">
-        <?php if (has_nav_menu('primary_navigation')) :?>
-          <?php sage_top_nav();?>
+        <?php if (has_nav_menu( 'primary_navigation' ) ) :?>
+          <?php Roots\Sage\Menus\sage_top_nav(); ?> 
         <?php endif;?>
       </div><!-- .top-bar-left -->
       <div class="top-bar-right">
