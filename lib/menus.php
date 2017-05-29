@@ -50,5 +50,4 @@ function required_active_nav_class( $classes, $item ) {
 	}
 	return $classes;
 }
-
 add_filter( 'nav_menu_css_class', __NAMESPACE__ . '\\required_active_nav_class', 10, 2 );
