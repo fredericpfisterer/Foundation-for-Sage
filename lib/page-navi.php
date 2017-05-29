@@ -1,4 +1,3 @@
-
 <?php
 
 namespace Roots\Sage\PageNavi;
