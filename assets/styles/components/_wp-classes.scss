@@ -23,7 +23,7 @@ article.sticky{
   // margin-bottom: ($line-height-computed / 2);
   height: auto;
 }
-@media (small) {
+@include breakpoint(small) {
   // Only float if not on an extra small device
   .alignleft {
     float: left;
