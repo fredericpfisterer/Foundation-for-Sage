@@ -11,7 +11,7 @@ var imagemin     = require('gulp-imagemin');
 var jshint       = require('gulp-jshint');
 var lazypipe     = require('lazypipe');
 var merge        = require('merge-stream');
-var minifyCss    = require('gulp-minify-css');
+var cleanCSS     = require('gulp-clean-css');
 var plumber      = require('gulp-plumber');
 var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
@@ -100,10 +100,7 @@ var cssTasks = function(filename) {
         'opera 12'
       ]
     })
-    .pipe(minifyCss, {
-      advanced: false,
-      rebase: false
-    })
+    .pipe(cleanCSS)
     .pipe(function() {
       return gulpif(enabled.rev, rev());
     })
