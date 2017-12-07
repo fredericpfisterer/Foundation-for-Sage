@@ -95,7 +95,10 @@ $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
 $global-flexbox: true;
 $global-prototype-breakpoints: false;
+<<<<<<< HEAD
 $global-button-cursor: auto;
+=======
+>>>>>>> c9b534e3489163051b4480b39e3895bce65c4af9
 $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
 
@@ -478,7 +481,10 @@ $menu-icon-spacing: 0.25rem;
 $menu-item-background-hover: $light-gray;
 $menu-state-back-compat: true;
 $menu-centered-back-compat: true;
+<<<<<<< HEAD
 $menu-icons-back-compat: true;
+=======
+>>>>>>> c9b534e3489163051b4480b39e3895bce65c4af9
 
 // 24. Meter
 // ---------
@@ -865,4 +871,8 @@ $grid-margin-gutters: (
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
+<<<<<<< HEAD
 $xy-block-grid-max: 8;
+=======
+$block-grid-max: 8;
+>>>>>>> c9b534e3489163051b4480b39e3895bce65c4af9
